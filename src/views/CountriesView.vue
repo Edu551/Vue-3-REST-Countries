@@ -84,12 +84,12 @@ export default {
       arrayCountries: [],
     };
   },
-  mounted() {
-    Countries.listar().then((coutryList) => {
-      this.allCountries = coutryList.data;
-      this.arrayCountries = coutryList.data;
-    });
-  },
+  // mounted() {
+  //   Countries.listar().then((coutryList) => {
+  //     this.allCountries = coutryList.data;
+  //     this.arrayCountries = coutryList.data;
+  //   });
+  // },
   computed: {
     filteredCountries() {
       return this.arrayCountries.map((item) => item);
@@ -97,7 +97,10 @@ export default {
   },
   created() {
     // this.getCountries();
-    this.filterBy();
+    Countries.listar().then((coutryList) => {
+      this.allCountries = coutryList.data;
+      this.arrayCountries = coutryList.data;
+    });
   },
   methods: {
     filterBy(region) {
